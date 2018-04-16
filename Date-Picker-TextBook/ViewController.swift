@@ -49,6 +49,7 @@ class ViewController: UIViewController {
             
             let okAction = UIAlertAction(title: "확인", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
                 print("확인")
+                self.view.backgroundColor = UIColor.white
                 
             }
             
@@ -62,12 +63,11 @@ class ViewController: UIViewController {
             
             
             
-       }else {
-            view.backgroundColor = UIColor.white
+       }
         }
         
     }
     
 
-}
+
 
