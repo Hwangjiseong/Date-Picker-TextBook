@@ -10,8 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var lblCurrentTime: UILabel!
-    
     @IBOutlet weak var lblPickerTime: UILabel!
+    
     var timer = Timer()
     
     override func viewDidLoad() {
@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
-        formatter.dateFormat = "YYYY년 MM월 dd일 HH : mm : ss a EEE"
+        formatter.dateFormat = "yyyy-MM-dd a HH:mm:ss EEE"
         lblPickerTime.text = formatter.string(from: datePickerView.date)
     }
     
@@ -37,7 +37,37 @@ class ViewController: UIViewController {
         formatter.dateFormat = "yyyy-MM-dd a HH:mm:ss EEE"
         let time1 = formatter.string(from: date1)
         lblCurrentTime.text = time1
+        
+        if lblPickerTime.text == lblCurrentTime.text {
+            view.backgroundColor = UIColor.red
+            let alertController = UIAlertController(title: "알람", message: "지정된시간입니다.", preferredStyle: UIAlertControllerStyle.alert)
+            
+            let DestructiveAction = UIAlertAction(title: "취소", style: UIAlertActionStyle.destructive) { (result : UIAlertAction) -> Void in
+                print("취소")
+                
+            }
+            
+            let okAction = UIAlertAction(title: "확인", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+                print("확인")
+                
+            }
+            
+            alertController.addAction(DestructiveAction)
+            
+            alertController.addAction(okAction)
+            
+            self.present(alertController, animated: true, completion: nil)
+            
+            
+            
+            
+            
+       }else {
+            view.backgroundColor = UIColor.white
+        }
+        
     }
+    
 
 }
 
